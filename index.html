@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Stack Viz</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <header class="cd-header">
+    <div class="header-wrapper">
+      <div class="logo-wrap">
+        <a href="https://dharmagat.com.np/" class="hover-target"><span>Dhar</span>Mu</a>
+      </div>
+      <div class="nav-but-wrap">
+        <div class="menu-icon hover-target">
+          <span class="menu-icon__line menu-icon__line-left"></span>
+          <span class="menu-icon__line"></span>
+          <span class="menu-icon__line menu-icon__line-right"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav">
+    <div class="nav__content">
+      <ul class="nav__list">
+        <li class="nav__list-item active-nav"><a href="#homey" class="hover-target">Home</a></li><li class="nav__list-item"><a href="#stackviz" class="hover-target">Stack Viz</a></li>
+        <li class="nav__list-item"><a href="#theory" class="hover-target">Theory</a></li>
+        <li class="nav__list-item"><a href="#codes" class="hover-target">Codes</a></li>
+        <li class="nav__list-item"><a href="#newsletter" class="hover-target">Newsletter</a></li>
+        <li class="nav__list-item"><a href="#contacts" class="hover-target">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero-section" id="homey">
+    <div class="hero-content">
+      <h1>Welcome to Our Stack Visualization Tool</h1>
+      <p>Learn and interact with data structures in an engaging and visual way.</p>
+      <button class="cta-button">Get Started</button>
+    </div>
+
+    <div class="hero-slider">
+      <div class="slider-container">
+        <img src="i2.png" alt="Image 1" class="slider-image" />
+        <img src="i1.png" alt="Image 2" class="slider-image" />
+        <img src="i3.png" alt="Image 3" class="slider-image" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="stackviz">
+    <h3>Stack Visualization </h3>
+
+    <!-- Stack size input -->
+    <div class="stack-size">
+      <label for="stackSizeInput">Set Stack Size:</label>
+      <input type="number" id="stackSizeInput" placeholder="Enter size" min="1">
+      <button onclick="setStackSize()">Set Size</button>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <input type="text" id="stackInput" placeholder="Enter value">
+      <button onclick="push()">Push</button>
+      <button onclick="pop()">Pop</button>
+      <button onclick="peek()">Peek</button>
+      <button onclick="clearStack()">Clear</button>
+      <button onclick="display()">Display</button>
+    </div>
+
+    <!-- Stack container -->
+    <div class="visualization">
+      <div class="stack-indexes" id="stackIndexes"></div>
+      <div class="stack-container" id="stackContainer"></div>
+    </div>
+
+    <!-- Warnings and messages -->
+    <p id="warning"></p>
+    <p id="output"></p>
+  </div>
+
+  <!-- Theory Section -->
+  <div class="theory-section" id="theory">
+    <h2>Stacks 📚</h2>
+    <p>A <strong>stack</strong> is a data structure that follows the <strong>Last In First Out (LIFO)</strong> principle. The last element added to the stack is the first one to be removed.</p>
+
+    <h3>Uses of Stack</h3>
+    <ul>
+      <li>Used in function calls and recursion in programming languages.</li>
+      <li>Helps in undo operations in text editors (e.g., CTRL+Z).</li>
+      <li>Used in web browsers for navigation (back and forward buttons).</li>
+      <li>Memory management, especially in allocating space for recursive functions.</li>
+    </ul>
+
+    <h3>Real-World Applications 🌎</h3>
+    <ul>
+      <li><strong>Expression Evaluation:</strong> Used for evaluating mathematical expressions in compilers.</li>
+      <li><strong>Backtracking Algorithms:</strong> In algorithms like Depth-First Search (DFS), the stack is used to keep track of the vertices.</li>
+      <li><strong>Undo Feature in Applications:</strong> Keeps track of operations for undo functionality in text editors.</li>
+    </ul>
+
+    <h3>Example Stack Operations ⚙️</h3>
+    <ul>
+      <li><strong>Push:</strong> Adds an item to the top of the stack.</li>
+      <li><strong>Pop:</strong> Removes the top item from the stack.</li>
+      <li><strong>Peek:</strong> Views the top item without removing it.</li>
+      <li><strong>Clear:</strong> Removes all items from the stack.</li>
+    </ul>
+  </div>
+
+
+  <div class="code-section" id="codes">
+    <h2>Stack Implementation in Different Languages</h2>
+
+    <!-- Buttons to switch languages -->
+    <div class="language-buttons">
+      <button id="btnC" onclick="switchCode('C')">C</button>
+      <button id="btnCpp" onclick="switchCode('C++')">C++</button>
+      <button id="btnJs" onclick="switchCode('JavaScript')">JavaScript</button>
+    </div>
+
+    <!-- Code box to display code -->
+    <pre id="codeBox" class="code-box">
+    // Default code (C)
+    #include <stdio.h>
+    #define MAX 10
+    int stack[MAX];
+    int top = -1;
+
+    void push(int val) {
+      if (top >= MAX - 1) {
+        printf("Stack Overflow\n");
+      } else {
+        stack[++top] = val;
+        printf("%d pushed to stack\n", val);
+      }
+    }
+
+    void pop() {
+      if (top == -1) {
+        printf("Stack Underflow\n");
+      } else {
+        printf("%d popped from stack\n", stack[top--]);
+      }
+    }
+
+    void peek() {
+      if (top == -1) {
+        printf("Stack is empty\n");
+      } else {
+        printf("Top element is %d\n", stack[top]);
+      }
+    }
+  </pre>
+  </div>
+
+  <!-- Newsletter Section -->
+  <div class="newsletter-section" id="newsletter">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Stay updated with the latest news and tutorials directly to your inbox.</p>
+
+    <form class="newsletter-form" action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- Replace with your Access Key -->
+    <input type="hidden" name="access_key" value="ce9cd6bf-5192-4733-9a26-23a0c1fb2455">
+
+      <input type="email" name="email" id="newsletterEmail" placeholder="Enter your email" required>
+      <button type="submit" class="subscribe-btn">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section" id="contacts">
+    <h2>Contact Us 📞</h2>
+    <p>If you have any questions or want to get in touch, feel free to send us a message.</p>
+
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- Replace with your Access Key -->
+    <input type="hidden" name="access_key" value="ce9cd6bf-5192-4733-9a26-23a0c1fb2455">
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your Email:</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" placeholder="Enter your message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+
+  <div class="section full-height over-hide">
+    <div class="switch-wrap">
+      <div id="switch" class="hover-target">
+        <div id="circle"></div>
+      </div>
+      <p><span>dark</span> - <span>light</span></p>
+    </div>
+  </div>
+
+  <div class='cursor' id="cursor"></div>
+  <div class='cursor2' id="cursor2"></div>
+  <div class='cursor3' id="cursor3"></div>
+
+
+
+  <!-- Link to page
+================================================== -->
+
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src="./script.js"></script>
+  <script src="./main.js"></script>
+
+</body>
+
+</html>
